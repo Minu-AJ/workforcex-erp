@@ -1,0 +1,14 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<h2>Mark Attendance - {{ today }}</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <label>
+        <input type="radio" name="status" value="PRESENT" {% if attendance.status == "PRESENT" %}checked>
+    </label>
+    <button type="submit">Mark Attendance</button>
+</form>
+{% endblock  %}

@@ -1,0 +1,22 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<h2>Apply Leave</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <select name="leave_type">
+        <option value="CASUAL">Casual</option>
+        <option value="SICK">Sick</option>
+        <option value="ANNUAL">Annual</option>
+    </select>
+
+    <input type="date" name="start_date">
+    <input type="date" name="end_date">
+
+    <textarea name="reason" placeholder="Reason"></textarea>
+
+    <button type="submit">Apply</button>
+</form>
+{% endblock  %}
