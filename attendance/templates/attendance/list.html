@@ -1,0 +1,21 @@
+<h2>My Attendance</h2>
+
+<table border="1">
+    <tr>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Marked At</th>
+    </tr>
+
+    {% for record in records %}
+    <tr>
+        <td>{{ record.date }}</td>
+        <td>{{ record.status }}</td>
+        <td>{{ record.marked_at }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No attendance records yet.</td>
+    </tr>
+    {% endfor %}
+</table>

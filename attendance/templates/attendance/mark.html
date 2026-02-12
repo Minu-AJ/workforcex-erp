@@ -1,14 +1,61 @@
 {% extends "base/base.html" %}
 
 {% block content %}
+
 <h2>Mark Attendance - {{ today }}</h2>
 
-<form action="" method="post">
+<!-- STATUS FORM -->
+<form method="POST">
     {% csrf_token %}
 
     <label>
-        <input type="radio" name="status" value="PRESENT" {% if attendance.status == "PRESENT" %}checked>
-    </label>
-    <button type="submit">Mark Attendance</button>
+        <input type="radio" name="status" value="PRESENT"
+               {% if attendance.status == "PRESENT" %}checked{% endif %}>
+        Present
+    </label><br>
+
+    <label>
+        <input type="radio" name="status" value="HALF_DAY"
+               {% if attendance.status == "HALF_DAY" %}checked{% endif %}>
+        Half Day
+    </label><br>
+
+    <label>
+        <input type="radio" name="status" value="ABSENT"
+               {% if attendance.status == "ABSENT" %}checked{% endif %}>
+        Absent
+    </label><br><br>
+
+    <button type="submit">Save Status</button>
 </form>
-{% endblock  %}
+
+<hr>
+
+<!-- CHECK-IN -->
+<form method="post" action="{% url 'check_in' %}">
+    {% csrf_token %}
+    <button type="submit"
+        {% if attendance.check_in %}disabled{% endif %}>
+        Check In
+    </button>
+</form>
+
+<!-- CHECK-OUT -->
+<form method="post" action="{% url 'check_out' %}">
+    {% csrf_token %}
+    <button type="submit"
+        {% if not attendance.check_in or attendance.check_out %}disabled{% endif %}>
+        Check Out
+    </button>
+</form>
+
+<hr>
+
+<p>
+    <strong>Status:</strong> {{ attendance.status }} <br>
+    <strong>Check In:</strong> {{ attendance.check_in|default:"Not checked in" }} <br>
+    <strong>Check Out:</strong> {{ attendance.check_out|default:"Not checked out" }} <br>
+    <strong>Work Hours:</strong> {{ attendance.work_hours|default:"0" }}
+</p>
+
+{% endblock %}

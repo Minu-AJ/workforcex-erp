@@ -28,6 +28,13 @@ class Attendance(models.Model):
     )
 
     marked_at = models.DateTimeField(auto_now_add=True)
+    
+    work_hours = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
 
     class Meta:
         unique_together = ('employee', 'date')
@@ -35,3 +42,6 @@ class Attendance(models.Model):
 
     def __str__(self):
         return f"{self.employee} - {self.date} - {self.status}"
+    
+
+
