@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<div style="display:flex; gap:20px; flex-wrap:wrap;">
+
+    <div style="border:1px solid black; padding:20px;">
+        <h3>Total Employees</h3>
+        <p>{{ total_employees }}</p>
+    </div>
+
+    <div style="border:1px solid black; padding:20px;">
+        <h3>Present Today</h3>
+        <p>{{ present_today }}</p>
+    </div>
+
+    <div style="border:1px solid black; padding:20px;">
+        <h3>Absent Today</h3>
+        <p>{{ absent_today }}</p>
+    </div>
+
+    <div style="border:1px solid black; padding:20px;">
+        <h3>Pending Leaves</h3>
+        <p>{{ pending_leaves }}</p>
+    </div>
+
+    <div style="border:1px solid black; padding:20px;">
+        <h3>Total Payroll Records</h3>
+        <p>{{ total_payroll }}</p>
+    </div>
+
+</div>
+
+{% endblock %}
