@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<h2>Manage Leaves</h2>
+<table border="1">
+    <tr>
+        <th>Employee</th>
+        <th>Leave Type</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for leave in leaves %}
+    <tr>
+        <td>{{ leave.employee }}</td>
+        <td>{{ leave.leave_type }}</td>
+        <td>{{ leave.start_date }}</td>
+        <td>{{ leave.end_date }}</td>
+        <td>{{ leave.status }}</td>
+        <td>
+            <a href="{% url "approve_leave" leave.id %}">Approve</a> |
+            <a href="{% url "reject_leave" leave.id %}">Reject</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock  %}

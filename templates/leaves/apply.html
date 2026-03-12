@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<h2>Apply Leaves</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <div>
+        <label>Leave Type:</label>
+        <select name="leave_type" required>
+            <option value="CASUAL">Casual Leave</option>
+            <option value="SICK">Sick Leave</option>
+            <option value="ANNUAL">Annual Leave</option>
+        </select>
+    </div>
+        <label>Start Date:</label>
+        <input type="date" name="start_date" required>
+    <div>
+    
+    <div>
+
+    </div>
+        <label>End Date:</label>
+        <input type="date" name="end_date" required>
+    </div>
+
+    <div>
+        <label>Reason:</label>
+        <textarea name="reason" required></textarea>
+    </div>
+
+    <button type="submit">Apply</button>
+</form>
+{% endblock  %}

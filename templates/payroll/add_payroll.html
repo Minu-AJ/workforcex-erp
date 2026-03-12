@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<h2>Add Payroll</h2>
+
+<form action="" method="post">
+
+    {% csrf_token %}
+
+    <label>Employee</label>
+    <select name="employee" class="form-control">
+        {% for employee in employees %}
+        <option value="{{ employee.id}}">{{employee}}</option>
+        {% endfor %}
+    </select>
+
+    <br>
+
+    <label>Month</label>
+    <input type="date" name="month" class="form-control">
+
+    <br>
+
+    <label>Basic salary</label>
+    <input type="number" name="basic_salary" class="form-control">
+
+    <br>
+
+    <label>Allowances</label>
+    <input type="number" name="allowances" class="form-control">
+
+    <br>
+
+    <label>Deductions</label>
+    <input type="number" name="deductions" class="form-control">
+
+    <br>
+
+    <button type="submit" class="btn btn-success">Save Payroll</button>
+
+</form>
+{% endblock  %}

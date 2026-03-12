@@ -15,7 +15,7 @@ def apply_leave(request):
             end_date=request.POST['end_date'],
             reason=request.POST['reason']
         )
-        return redirect('dashbord')
+        return redirect('dashboard')
     return render(request, 'leaves/apply.html')
 
 @login_required
@@ -23,6 +23,7 @@ def apply_leave(request):
 def manage_leaves(request):
     leaves = Leave.objects.all()
     return render(request, 'leaves/manage.html', {'leaves':leaves})
+    
 
 @login_required
 @hr_admin_required
@@ -46,4 +47,6 @@ def my_leaves(request):
     leaves = Leave.objects.filter(employee=employee)
     return render(request, 'leaves/my_leaves.html', {'leaves': leaves})
 
-
+@login_required
+def leaves_home(request):
+    return redirect('my_leaves')

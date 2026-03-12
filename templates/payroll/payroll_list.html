@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<h2>Payroll List</h2>
+
+<a href="{% url "add_payroll" %}" class="btn btn-primary">Add payroll</a>
+
+<table class='table table-bordered mt-3'>
+    <tr>
+        <th>Employee</th>
+        <th>Month</th>
+        <th>Basic Salary</th>
+        <th>Allowances</th>
+        <th>Deductions</th>
+        <th>Net Salary</th>
+    </tr>
+
+    {% for payroll in payrolls %}
+    <tr>
+        <td>{{ payroll.employee}}</td>
+        <td>{{ payroll.month }}</td>
+        <td>{{ payroll.basic_salary }}</td>
+        <td>{{ payroll.allowances }}</td>
+        <td>{{ payroll.deductions }}</td>
+        <td>{{ payroll.net_salary }}</td>
+        <td>
+            <a href="{% url "generate_payslip" payroll.id %}" class="btn btn-success btn-sm">Download Payslip</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock  %}

@@ -1,11 +1,11 @@
 {% extends "base/base.html" %}
 {% block content %}
 
-<h2>Employee Form</h2>
+<h2 class="mb-4">Employee Form</h2>
 
-<form action="" method="post">
+<form method="post" class="card p-4 shadow">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save</button>
+    <button type="submit" class="btn btn-success">Save</button>
 </form>
 {% endblock %}

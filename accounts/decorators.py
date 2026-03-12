@@ -3,8 +3,8 @@ from django.contrib import messages
 
 def hr_admin_required(view_func):
     def wrapper(request, *args, **kwargs):
-        if hasattr(request.user, 'userprofile'):
-            role = request.user.userprofile.role
+        if hasattr(request.user, 'employee'):
+            role = request.user.employee.role
             
             if role in ['HR', 'ADMIN']:
                 return view_func(request, *args, **kwargs)
